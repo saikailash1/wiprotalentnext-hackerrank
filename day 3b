@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String args[] ) throws Exception {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT */
+          String str;
+          Scanner in=new Scanner(System.in);
+          str=in.next();
+          Solution s=new Solution();
+          s.func1(str);
+
+    }
+
+    void func1(String str) 
+    {   
+        int j;
+        int strlen = str.length(); 
+        String low = ""; 
+        String up= ""; 
+        char temp; 
+        for (j = 0; j < strlen; j++) 
+         { 
+            temp = str.charAt(j);  
+            if (temp >= 'A' && temp <= 'Z') 
+               { 
+                 up+=temp; 
+               }  
+            else 
+               { 
+                low+=temp; 
+               } 
+          } 
+        System.out.println(low+up); 
+    } 
+
+}
