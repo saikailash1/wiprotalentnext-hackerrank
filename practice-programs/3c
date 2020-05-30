@@ -1,0 +1,30 @@
+import java.util.*;
+public class Simple{
+
+     public static void main(String []args) {
+    	    Scanner sc = new Scanner(System.in);
+    	    int[] arr={1,4,34,56,7};
+    	    int j = sc.nextInt();
+            int flag = 0;
+    	    for(int i=0;i<5;i++)
+    	    {
+    	    	if(arr[i]==j)
+    	    	{
+    	    		flag = i;
+    	    	}
+    	    	else
+    	    	{
+    	    		continue;
+    	    	}    	
+    	    }
+    	    if(flag>0)
+    	    {
+    	    	System.out.println(flag);
+    	    }
+    	    else 
+    	    {
+    	    	System.out.println(-1);
+    	    }
+    	    sc.close();
+     }
+}
