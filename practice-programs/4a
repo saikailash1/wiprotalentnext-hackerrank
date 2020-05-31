@@ -1,0 +1,28 @@
+class Box
+{
+    double width;
+    double height;
+    double depth;
+    
+    Box()
+    {
+        width = 100;
+        height = 100;
+        depth = 100;
+    }
+    double volume()
+    {
+        return width * height * depth;
+    }
+}
+
+class Simple
+{
+    public static void main(String args[])
+    {
+        Box bx = new Box();       
+        double vol;
+        vol = bx.volume();
+        System.out.println(vol);        
+    }
+}
