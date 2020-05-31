@@ -1,0 +1,118 @@
+port java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'counts' function below.
+     *
+     * The function is expected to return an INTEGER_ARRAY.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY teamA
+     *  2. INTEGER_ARRAY teamB
+     */
+
+    public static List<Integer> counts(List<Integer> teamA, List<Integer> teamB) {
+    // Write your code here
+    int n = teamA.size();
+    int m = teamB.size();
+    int b=0;
+    int[] arr = new int[n];
+    int[] arr2 = new int[m];
+    int[] arr3 = new int[m];
+    for(int i=0;i<n;i++)
+    {
+        arr[i] = teamA.get(i);
+    }
+    for(int j=0;j<m;j++)
+    {
+        arr2[j] = teamB.get(j);
+    }
+    for(int k=0;k<m;k++)
+    {
+        int count = 0;
+        b = arr2[k];
+        for(int l=0;l<m;l++)
+        {
+            if(b<=arr[l])
+            {
+                count=count+1;
+            }
+            else{
+                continue;
+            }
+        }
+        if(count>0)
+        {
+            arr3[k]=count;
+        }
+        else{
+            arr3[k]=0;
+        }
+    }
+    List<Integer> li = new ArrayList<Integer>();
+    for(int i=0;i<m;i++)
+    {
+        li.add(arr3[i]);
+    }
+    return li;
+
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int teamACount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> teamA = IntStream.range(0, teamACount).mapToObj(i -> {
+            try {
+                return bufferedReader.readLine().replaceAll("\\s+$", "");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        })
+            .map(String::trim)
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int teamBCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> teamB = IntStream.range(0, teamBCount).mapToObj(i -> {
+            try {
+                return bufferedReader.readLine().replaceAll("\\s+$", "");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        })
+            .map(String::trim)
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        List<Integer> result = Result.counts(teamA, teamB);
+
+        bufferedWriter.write(
+            result.stream()
+                .map(Object::toString)
+                .collect(joining("\n"))
+            + "\n"
+        );
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
