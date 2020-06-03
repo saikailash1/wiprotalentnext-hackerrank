@@ -1,0 +1,107 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'minOperations' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    public static int minOperations(List<Integer> arr) {
+    // Write your code here
+    int n = arr.size();
+    int[] a = new int[n];
+    int lowcount = 0, highcount = 0;
+
+    //list to array
+    for(int i=0;i<n;i++)
+    {
+        a[i]=arr.get(i);
+    }
+
+    //for LHLHLH
+    for(int i=0;i<n;i++)
+    {
+        //for first element only
+            if(a[0]<a[1])
+            {
+                continue;
+            }
+            else{
+                lowcount = lowcount+1;
+            }
+        if((a[i]<a[i+1])&&(a[i]>a[i-1]))
+        {
+            continue;
+        }
+        else
+        {
+            lowcount = lowcount+1;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        //for first element only 
+            if(a[0]>a[1])
+            {
+                continue;
+            }
+            else{
+                highcount = highcount+1;
+            }
+        if((a[i]>a[i+1])&&(a[i]<a[i-1]))
+        {
+            continue;
+        }
+        else
+        {
+            highcount = highcount+1;
+        }
+    }
+    int avg =(lowcount+highcount)/2;
+    return avg;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int arrCount = Integer.parseInt(bufferedReader.readLine().trim());
+
+        List<Integer> arr = IntStream.range(0, arrCount).mapToObj(i -> {
+            try {
+                return bufferedReader.readLine().replaceAll("\\s+$", "");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        })
+            .map(String::trim)
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        int result = Result.minOperations(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
