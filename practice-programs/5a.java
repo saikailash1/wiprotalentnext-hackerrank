@@ -1,7 +1,7 @@
 import java.util.*;
 
-//abstract class
-abstract class Author
+
+class Author
 {
 	//Declaration
 	private String name;
@@ -75,7 +75,7 @@ class Book extends Author
 	  System.out.println(bk.getName());
 	  System.out.println(bk.getPrice());
 	  System.out.println(bk.getQtyInStock());
-	  Author ar = new Book();
+	  Author ar = new Author();
 	  ar.Info();
   }
 }
