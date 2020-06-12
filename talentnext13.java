@@ -36,7 +36,7 @@ else if(ch[i]=='6')
 path = path+1;
 }
 
-else if(ch[i]=='8')
+else if(ch[i]=='9')
 {
 path = path+1;
 }
