@@ -1,8 +1,8 @@
 import java.util.*;
 interface LibraryUser
 {
-	void registerAccount(int a);
-	void requestBook(String b);
+	void registerAccount(int x);
+	void requestBook(String y);
 }
 
 class KidUser implements LibraryUser
