@@ -81,8 +81,8 @@ public class LibraryInterfaceDemo
 		AdultUser au = new AdultUser();
 		ku.registerAccount(a);
 		ku.requestBook(b);
-		au.registerAccount(a);
-		au.requestBook(b);
+		au.registerAccount(c);
+		au.requestBook(d);
 		sc.close();
 	}
 }
